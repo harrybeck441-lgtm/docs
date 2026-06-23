@@ -47,16 +47,14 @@
             "icon": "wrench",
             "pages": [
               "setup/installation",
-              "setup/modules",
-              "setup/roadmap"
+              "setup/modules"
             ]
           },
           {
             "group": "Reference",
             "icon": "book",
             "pages": [
-              "reference/troubleshooting",
-              "reference/coding-style-guide"
+              "reference/troubleshooting"
             ]
           }
         ]
