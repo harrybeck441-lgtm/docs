@@ -1,0 +1,205 @@
+---
+title: "Coding Style Guide"
+description: "Conventions and best practices for contributing to the SalesAI codebase."
+icon: "code"
+---
+
+## 1. Mongoose Schema Structure
+
+### Basic Structure
+
+- Use strict schema definition
+- Include timestamps (`createdAt`, `updatedAt`)
+- Use `ObjectId` for references
+- Define validation rules
+- Use virtual fields
+
+### Schema Definition
+
+```javascript
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+
+const ExampleSchema = new Schema({
+  name: { type: String, required: true },
+  email: { type: String, unique: true },
+  userId: { type: Schema.Types.ObjectId, ref: 'User' },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now }
+});
+```
+
+### Validation
+
+- Use enums for status
+- Use required fields
+- Use unique constraints
+- Add custom validators
+
+### Indexes
+
+- Add indexes for queries
+- Use compound indexes
+- Consider sparse indexes
+
+## 2. Variable Naming Conventions
+
+- Use **camelCase** for variable names (e.g., `firstName`, `userEmail`)
+- Use **PascalCase** for class names (e.g., `UserModel`, `CampaignController`)
+- Use **UPPER\_SNAKE\_CASE** for constants (e.g., `MAX_RETRIES`, `API_KEY`)
+- Use **snake\_case** for database fields and environment variables (e.g., `first_name`, `DATABASE_URL`)
+- Be descriptive but concise
+- Avoid single-letter variable names except for simple loops
+- Use plural for arrays (e.g., `users`, `tasks`)
+- Prefix boolean variables with `is`, `has`, or `can` (e.g., `isActive`, `hasError`)
+
+## 3. File Structure and Organization
+
+- Use clear, descriptive file names (e.g., `agent.controller.js`, `campaign.controller.js`)
+- Group related functionality into modules (e.g., `agent/`, `campaign/`, `hubspot/`)
+- Use consistent directory structure:
+
+```text
+api/
+├── agent/
+│   ├── agent.controller.js
+│   ├── agent.model.js
+│   └── agent.helper.js
+├── campaign/
+└── ...
+```
+
+## 4. Code Style
+
+- Use strict mode (`'use strict'`)
+- Use arrow functions for consistency
+- Use async/await for asynchronous operations
+- Use single quotes for strings
+- Use ES6\+ syntax (destructuring, template literals, etc.)
+
+## 5. Function Definitions
+
+```javascript
+exports.functionName = async (req, res) => {
+  try {
+    // business logic
+    return sendResponse(res, SUCCESS, 'Success message', data);
+  } catch (error) {
+    return errReturned(res, error);
+  }
+};
+```
+
+## 6. Error Handling
+
+- Use try-catch blocks for error handling
+- Use standardized error response functions (`errReturned`)
+- Use proper error codes (`BADREQUEST`, `SUCCESS`, etc.)
+- Log errors appropriately
+
+## 7. Response Patterns
+
+```javascript
+// Success response
+return sendResponse(res, SUCCESS, 'Success message', data);
+
+// Error response
+return errReturned(res, error);
+```
+
+## 8. Environment Variables
+
+- Access environment variables through `process['env']`
+- Use consistent naming convention (UPPER\_SNAKE\_CASE)
+- Keep sensitive data in environment variables
+
+## 9. Database Operations
+
+- Use Mongoose for MongoDB operations
+- Use async/await for database calls
+- Use proper population for related documents
+- Handle database errors appropriately
+
+## 10. Input Validation
+
+- Use a validator package for input validation
+- Check for required fields
+- Validate data types and formats
+- Return meaningful error messages
+
+## 11. Code Documentation
+
+- Use clear function descriptions
+- Document complex logic
+- Use TODO comments for future improvements
+- Add section headers for organization
+
+## 12. Helper Functions
+
+- Keep helper functions in separate files
+- Use descriptive function names
+- Keep functions focused and reusable
+- Document helper function purposes
+
+## 13. Authentication
+
+- Use proper authentication middleware
+- Check user roles and permissions
+- Handle unauthorized access
+- Keep sensitive data secure
+
+## 14. API Endpoints
+
+- Use RESTful naming conventions
+- Use consistent parameter handling
+- Document API endpoints
+- Handle different HTTP methods appropriately
+
+## 15. Imports and Exports
+
+```javascript
+// Use consistent import order
+const mongoose = require('mongoose');
+const model = require('./model');
+const { sendResponse, errReturned } = require('../../config/dto');
+const { SUCCESS, BADREQUEST } = require('../../config/ResponseCodes');
+
+// Use named exports
+exports.functionName = async (req, res) => { ... };
+```
+
+## 16. Code Organization
+
+- Group related functions together
+- Use clear section headers
+- Keep functions focused and small
+- Use proper indentation and spacing
+
+## 17. Security Practices
+
+- Validate all inputs
+- Sanitize user data
+- Protect sensitive information
+- Use proper authentication
+- Handle errors securely
+
+## 18. Performance Optimization
+
+- Use `Promise.all` for parallel operations
+- Optimize database queries
+- Use proper caching
+- Handle resources efficiently
+
+## 19. Logging
+
+- Use proper logging levels
+- Log important operations
+- Include relevant context
+- Handle errors in logs
+
+## 20. Testing
+
+- Write testable code
+- Keep functions pure when possible
+- Use proper mocking
+- Document test cases

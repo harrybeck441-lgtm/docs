@@ -1,0 +1,24 @@
+---
+title: "Troubleshooting"
+description: "Common issues and how to fix them."
+icon: "circle-question"
+---
+
+## Common Issues
+
+### Port Already in Use
+
+If you encounter an error like `EADDRINUSE`, free the port by killing the process using it:
+
+```bash
+sudo lsof -i :4000
+sudo kill -9 <PID>
+```
+
+### Package Installation Fails
+
+Retry with:
+
+```bash
+npm install --force
+```

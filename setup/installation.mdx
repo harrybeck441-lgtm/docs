@@ -1,0 +1,91 @@
+---
+title: "Setup Project"
+description: "Clone, install, and run the SalesAI app, landing page, backend, and agent locally."
+icon: "download"
+---
+
+## 🚀 Setup Project
+
+<Steps>
+  <Step title="Clone">
+    Clone the repository for SalesAI.
+
+    ```sh
+    # clone the repository
+    git clone git@github.com:harrybeck441-lgtm/SalesAI.git
+    cd salesai-digital
+    ```
+  </Step>
+  <Step title="Install">
+    Navigate into each project directory and set them up.
+
+    <Tabs>
+      <Tab title="App (dashboard)">
+        ```sh
+        cd app
+        npm install
+        npm start
+        ```
+      </Tab>
+      <Tab title="Landing Page">
+        ```sh
+        cd landingPage
+        npm install
+        npm run dev
+        ```
+      </Tab>
+      <Tab title="Backend">
+        ```sh
+        cd server
+        npm install
+        npm install -g nodemon
+        nodemon server
+        ```
+      </Tab>
+      <Tab title="Agent">
+        ```sh
+        cd salesai-digital/Agent
+        python3 -m pip install -r requirements.txt
+        python3 agent.py download-files
+        python3 agent.py dev
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step title="Environment Variables">
+    Create `.env` files for each service from the provided examples.
+
+    **Server:**
+
+    ```sh
+    cp .env.example .env.development
+    ```
+
+    **Agent:**
+
+    ```sh
+    cp .env.example .env
+    ```
+
+    **App:**
+
+    ```sh
+    cp .env.example .env
+    ```
+
+    Update the `.env.development` and `.env` files with the required values such as API keys, database credentials, OAuth client IDs, etc.
+  </Step>
+  <Step title="Start Editing">
+    - The **app dashboard** runs at `http://localhost:3000`
+    - The **landing page** runs at `http://localhost:5173`
+    - The **backend server** runs on the port specified in your `.env.development` file
+    - To test the agent, run:
+
+    ```sh
+    lk dispatch create \
+      --new-room \
+      --agent-name outbound-caller \
+      --metadata '+15105550100'
+    ```
+  </Step>
+</Steps>
