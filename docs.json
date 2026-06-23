@@ -46,7 +46,6 @@
             "group": "Setup",
             "icon": "wrench",
             "pages": [
-              "setup/installation",
               "setup/modules"
             ]
           },
