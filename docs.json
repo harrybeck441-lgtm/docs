@@ -34,6 +34,11 @@
             "group": "Platform Walkthrough",
             "icon": "video",
             "pages": [
+              "walkthrough/getting-started",
+              "walkthrough/crm",
+              "walkthrough/voice-agents",
+              "walkthrough/workflows",
+              "walkthrough/agency-portal",
               "platform-overview"
             ]
           }
